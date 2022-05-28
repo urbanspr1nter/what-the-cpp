@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -15,10 +16,12 @@ int main() {
 	bool hasQuit = false;
 
 	while (!hasQuit) {
+		string userInput = "";
 		int input;
 
 		cout << "What is your number? ";
-		cin >> input;
+		getline(cin, userInput);
+		stringstream(userInput) >> input;
 
 		int quotient = input;
 
@@ -37,10 +40,10 @@ int main() {
 
 		cout << "-> The answer is " << number << endl;
 
-		char isProcessAgain;
+		string isProcessAgain;
 		cout << "Press 'q' to quit or any key to process again. ";
-		cin >> isProcessAgain;
-		if (isProcessAgain == 'q') {
+		getline(cin, isProcessAgain);
+		if (isProcessAgain.compare("q") == 0) {
 			hasQuit = true;
 		}
 		cout << endl;
